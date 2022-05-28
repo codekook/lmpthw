@@ -1,5 +1,8 @@
 import argparse
 
+def main():
+    hello()
+
 #argparse command line argument
 def hello():
     #Create the parser object
@@ -16,6 +19,7 @@ def hello():
 
     #Call parse_args function on the parser and assign to args variable
     args = parser.parse_args()
-    print(args)
+    return args
 
-hello()
+if __name__ == "__main__":
+    main()
