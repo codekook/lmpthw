@@ -10,7 +10,7 @@ def main():
     print(hello())
 
 #argv command line arument
-def hello(to="world"):
+def hello():
     hello = ("hello, " + sys.argv[1])
     return hello
 
