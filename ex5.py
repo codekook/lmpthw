@@ -1,11 +1,14 @@
 import sys, argparse
 
-def doc_reader():
+def main():
     #Check for two arguments
     if len(sys.argv) < 2:
         print("You must have at least one document")
         sys.exit()
 
+    doc_reader2()
+
+def doc_reader():
     #create a newfile
     newfile = open("new_document.txt", "w")
 
@@ -19,15 +22,9 @@ def doc_reader():
     doc.closed
     newfile.close()
 
-#doc_reader()
 
 '''Refactored with argparse'''
 def doc_reader2():
-    #Check for two arguments
-    if len(sys.argv) < 2:
-        print("You must have at least one document")
-        sys.exit()
-
     #Create the parser object
     parser = argparse.ArgumentParser(description="Create cat-style python application")
 
@@ -42,12 +39,14 @@ def doc_reader2():
 
     #open and read each file from the command line
     for arg in args.files:
-            with open(arg, encoding="utf-8") as arg:
-                read_data = arg.read()
-                #write the contents of each argv to the newfile
-                newfile.write(read_data)
-                newfile.write("\n")
+        with open(arg, encoding="utf-8") as arg:
+            read_data = arg.read()
+            #write the contents of each argv to the newfile
+            newfile.write(read_data)
+            newfile.write("\n")
     arg.closed
     newfile.close()
 
-doc_reader2()
+
+if __name__ == "__main__":
+    main()
