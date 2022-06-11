@@ -1,3 +1,5 @@
+'''Implementing find'''
+
 import os, argparse, sys
 from pathlib import Path
 
@@ -29,7 +31,7 @@ def main():
     if args.name:
         for file in files.rglob(args.name):
             print(file)
-    #If the optonal argument is to search for a type directory or type file 
+    #If the optonal argument is to search for a type directory or type file
     elif args.type:
         if args.type not in ["d", "f"]:
             print(f"Unknown file: {args.type}")

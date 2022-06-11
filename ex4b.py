@@ -1,3 +1,5 @@
+'''Implementing argparse'''
+
 import argparse
 
 def main():

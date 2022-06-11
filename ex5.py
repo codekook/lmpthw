@@ -1,3 +1,5 @@
+'''Implementing cat'''
+
 import sys, argparse
 
 def main():
