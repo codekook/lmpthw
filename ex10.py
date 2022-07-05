@@ -78,11 +78,12 @@ def parse_args():
     #Add optional file argument
     parser.add_argument("-file", nargs="+", help="File to sort by line.  Type -file followed by the name of the file to sort")
     #Add optional sort argument
-    parser.add_argument("-sort", action="store_true", help="Sort file alphabetically. Type -s followed by sort")
+    parser.add_argument("-sort", action="store_true", help="Sort file alphabetically.")
     #Add optional rsort argument
-    parser.add_argument("-rsort", action="store_true", help="Reverse sort the words.  Type -r followed by rsort")
+    parser.add_argument("-rsort", action="store_true", help="Reverse sort the words.")
     #Add optional randsort argument
-    parser.add_argument("-rand", action="store_true", help="Randomize the words.  Type -rand followed by randomize")
+    parser.add_argument("-rand", action="store_true", help="Randomize the words.")
+
     #Return parsed arguments
     return parser.parse_args()
 

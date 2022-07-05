@@ -9,7 +9,7 @@ def main():
         sys.exit()
 
     args = parse_args()
-    print(args)
+    print("args: ", args)
 
     #implement parsearg for s command (substitute the replacement string for the any instance of the regular expression in the pattern space)
 
@@ -24,6 +24,9 @@ def main():
         #write the new_text into the file
         file.write(new_text)
 
+    if args.print:
+        print(new_text)
+
 def parse_args():
 
     #create an argparser to parse the command line arguments
@@ -31,6 +34,11 @@ def parse_args():
 
     #argument for the file
     parser.add_argument("file", nargs="+", help="file(s) used for the sed function")
+
+    #optionally prints text to stdout
+    parser.add_argument("-print", action="store_true", help="prints all the contents of a file to the standard output.")
+
+    #return parsed arguments
     return parser.parse_args()
 
 if __name__ == "__main__":
