@@ -1,6 +1,6 @@
 '''Implementing uniq command'''
 
-import argparse, collections
+import sys, argparse, collections
 
 def main():
     #call parseargs
@@ -19,34 +19,37 @@ def main():
             if args.count:
                 #call the count function
                 count_line = count(start)
-                for i in  unique_line:
-                    print(i)
-                for j in count_line.values():
-                    print(j)
+                #create a dictionary for the count and unique lines
+                values = [i for i in  unique_line]
+                #print(values)
+                keys = [j for j in count_line.values()]
+                #print(keys)
+                final = combine(keys, values)
+                print(final)
     else:
-        #request a list input
-        list = input("What is the list to sort? ")
-        #call sort function
-        sorted_list = sort(list)
-        #print(sorted_list)
+        print("What is the list to sort?")
+        #Get a list from the standard input
+        list = []
+        for i in sys.stdin:
+            list.append(i)
+            if "quit" == i.rstrip():
+                break
+        list.remove("quit\n")
+        sorted_list = sorted(list)
         #check if the count function was provided
         if args.count:
             count_list = count(sorted_list)
             #print(count_list)
             unique_list = uniq(sorted_list)
-            for i in unique_list:
-                print(i)
-            for j in count_list.values():
-                print(j)
+            #create a dictionary for the count and unique lines
+            values = [i for i in unique_list]
+            keys = [j for j in count_list.values()]
+            final = combine(keys, values)
+            print(final)
         else:
             #call the unique function
             unique_list = uniq(sorted_list)
             print(unique_list)
-
-#sort function
-def sort(list):
-    new_list = sorted(list.split())
-    return new_list
 
 #uniq function
 def uniq(list):
@@ -57,6 +60,10 @@ def uniq(list):
 #count function
 def count(list):
     return collections.Counter(list)
+
+def combine(keys, values):
+    combined = {keys[i] : values[i] for i in range(len(keys))}
+    return combined
 
 #argument parser
 def parse_args():
