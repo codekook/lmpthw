@@ -26,6 +26,8 @@ def main():
                 #print(keys)
                 final = combine(keys, values)
                 print(final)
+            else:
+                print(unique_line)
     else:
         print("What is the list to sort?")
         #Get a list from the standard input
