@@ -11,21 +11,23 @@ def main():
     args = parse_args()
     print("args: ", args)
 
-    #implement parsearg for s command (substitute the replacement string for the any instance of the regular expression in the pattern space)
-
     #request regex pattern from user
     pattern = input("What's the regex pattern to search? ")
     repl = input("What's the new text? ")
 
     #read file into memory
     with open(args.file[0], "r+", encoding="utf-8") as file:
-        #search the list for a matching regex pattern and if there is a match substitute the repl text
-        new_text = re.sub(pattern, repl, file.read())
+        new_text = sed(pattern, repl, file)
         #write the new_text into the file
         file.write(new_text)
 
     if args.print:
         print(new_text)
+
+#substitute the replacement string for any instance of the regular expression in the pattern
+def sed(pattern, repl, file):
+    #search the list for a matching regex pattern and if there is a match substitute the repl text
+    return re.sub(pattern, repl, file.read())
 
 def parse_args():
 
